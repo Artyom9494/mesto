@@ -1,0 +1,9 @@
+.elements__content {
+    overflow: hidden;
+    max-height: 361px;
+    max-width: 282px;
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;  
+}
