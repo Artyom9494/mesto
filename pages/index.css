@@ -16,6 +16,7 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__addButton/profile__addButton.css);
 @import url(../blocks/profile/__usser/profile__usser.css);
+@import url(../blocks/profile/__plus/profile__plus.css);
 /* elements */
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__content/elements__content.css);
@@ -26,4 +27,3 @@
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
-@import url();
