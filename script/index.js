@@ -11,30 +11,37 @@ let like = document.querySelector('.elements__like');
 inputUserName.value = userName.innerHTML;
 inputUserInfo.value = userInfo.innerHTML;
 
-like.addEventListener('click', function () {
-    like.classList.toggle('activ');
-})
+function clos () {
+    popup.classList.toggle('popup_opened');
+};
+function inputValue () {
+    userName.innerHTML = inputUserName.value;
+    userInfo.innerHTML = inputUserInfo.value;
+};
+
 editButton.addEventListener('click', function () {
     popup.classList.toggle('popup_opened');
 });
 
-buttonSave.addEventListener('click', function (e) {
-    e.preventDefault();
-    userName.innerHTML = inputUserName.value;
-    userInfo.innerHTML = inputUserInfo.value;
-
-    popup.classList.toggle('popup_opened')
+buttonSave.addEventListener('click', function () {
+    inputValue()
+    clos();
 })
 
 buttonClose.addEventListener('click', function () { 
-    popup.classList.toggle('popup_opened')
+    clos();
 });
 
+popup.addEventListener('click', function (event) {
+    if(event.target == event.currentTarget) {
+        clos();
+    }
+});
 
-
-
-
-
-
-
+document.addEventListener('keyup', function (event) {
+    if( event.key == 'Enter') {
+        inputValue()
+        popup.classList.remove('popup_opened');
+    }
+})
 
