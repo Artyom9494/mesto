@@ -3,18 +3,30 @@ let editButton = document.querySelector('.profile__edit-button');
 let userName = document.querySelector('.profile__name');
 let userInfo = document.querySelector('.profile__info');
 let inputUserName = document.querySelector('.mod-name_mod-value');
-let inputUserInfo = document.querySelector('.mod-name_mod-value');
+let inputUserInfo = document.querySelector('.mod-info_mod-value');
 let buttonSave = document.querySelector('.popup__button');
 let buttonClose = document.querySelector('.popup__close');
 let like = document.querySelector('.elements__like');
 let formElement = document.querySelector('.popup__form')
 
-inputUserName.value = userName.textContent;
-inputUserInfo.value = userInfo.textContent;
+
+editButton.addEventListener('click', function () {
+    inputUserName.value = userName.textContent;
+    inputUserInfo.value = userInfo.textContent;
+    popup.classList.add('popup_opened');
+});
 
 function closePopup () {
     popup.classList.toggle('popup_opened');
 };
+buttonClose.addEventListener('click', closePopup);
+
+buttonSave.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    userName.textContent = inputUserName.value;
+    userInfo.textContent = inputUserInfo.value;
+    closePopup();
+})
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -22,20 +34,8 @@ function formSubmitHandler (evt) {
     userInfo.textContent = inputUserInfo.value;
 }
 
-editButton.addEventListener('click', function () {
-    userName.textContent = inputUserName.value;
-    userInfo.textContent = inputUserInfo.value;
-    popup.classList.toggle('popup_opened');
-});
+formElement.addEventListener('submit', formSubmitHandler);
 
-buttonSave.addEventListener('click', function (e) {
-    e.preventDefault()
-    userName.textContent = inputUserName.value;
-    userInfo.textContent = inputUserInfo.value;
-    closePopup();
-})
-
-buttonClose.addEventListener('click', closePopup);
 
 popup.addEventListener('click', function (event) {
     if(event.target == event.currentTarget) {
@@ -43,14 +43,10 @@ popup.addEventListener('click', function (event) {
     }
 });
 
-document.addEventListener('keyup', function (event) {
-    event.preventDefault()
-    if( event.key == 'Enter') {
-        popup.classList.remove('popup_opened');
-        formSubmitHandler();
-    }
-})
-
-
-
-formElement.addEventListener('submit', formSubmitHandler);
+// document.addEventListener('keyup', function (event) {
+//     event.preventDefault()
+//     if( event.key == 'Enter') {
+//         popup.classList.remove('popup_opened');
+//         formSubmitHandler();
+//     }
+// })
