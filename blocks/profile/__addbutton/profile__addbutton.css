@@ -1,4 +1,4 @@
-.profile__addButton {
+.profile__addbutton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,20 +7,19 @@
     margin: 35px 0  35px auto;
     border: 2px solid #FFFFFF;
     box-sizing: border-box;
+    background: none;
     border-radius: 2px;
-    opacity: 1;
     transition: opacity 0.6s ease-in;
     cursor: url(../../../images/Layer\ 1\ 2.png), pointer;
 }
 
-.profile__addButton:hover {
+.profile__addbutton:hover {
     opacity: .6;
 }
 
 @media screen and (max-width: 655px) {
-    .profile__addButton {
+    .profile__addbutton {
         margin: 36px auto 0;
-        height: 50px;
         width: 282px;
     }
 }

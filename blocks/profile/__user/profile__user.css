@@ -1,12 +1,14 @@
-.profile__usser {
+.profile__user {
+    margin: 0;
     box-sizing: border-box;
     max-width: 336px;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 @media screen and (max-width: 655px) {
-    .profile__usser {
-        justify-content: center;
+.profile__user {
+    justify-content: center;
     }
 }

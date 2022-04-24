@@ -1,6 +1,13 @@
 .elements__name-place {
-    font-family: Inter;
+    margin: 25px auto 31px 21px;
+    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 900;
     line-height: 29px;
+    width: 216px;
+    font-family: 'Inter';
+    font-style: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

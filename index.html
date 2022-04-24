@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
@@ -13,14 +12,19 @@
     <div class="popup">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__name popup__name_focus" type="text" placeholder="Введите имя">
-            <input class="popup__achievements popup__achievements_focus" type="text" placeholder="Введите информацию о себе">
-            <button class="popup__button">Сохранить</button>
-            <img class="popup__close" src="./images/CloseIcon.png" alt="кномка закрыть">
+            <form class="popup__form" action="" name="">
+              <input class="popup__input mod-name_mod-value1" type="text" placeholder="Введите имя">
+              <input class="popup__input mod-name_mod-value" type="text" placeholder="Введите информацию о себе">
+              <button class="popup__button" type="submit">Сохранить</button>
+            </form>
+
+            <button class="popup__close" type="button">
+                <img class="popup__close-img" src="./images/CloseIcon.svg" alt=" кнопка">
+            </button>
         </div>
     </div>
 
-    <div class="conteiner">
+    <div class="container">
 
         <header class="header">
             <img class="header__logo" src="./images/logoHead.png" alt="логотип">
@@ -30,14 +34,14 @@
 
             <section class="profile">
                 <img class="profile__avatar" src="./images/image.jpg" alt="фото профиля">
-                <div class="profile__usser">
+                <div class="profile__user">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <img class="profile__Edit-Button" src="./images/EditButton.svg" alt="кнопка">
+                    <button class="profile__edit-button" type="button"></button>
                     <p class="profile__info">Исследователь океана</p>
                 </div>
-                <div class="profile__addButton">
-                   <img class="profile__plus" src="./images/Vector.png" alt="знае плюс/добавить"> 
-                </div>
+                <button class="profile__addbutton">
+                    <img class="profile__plus" src="./images/Vector.svg" alt="знае плюс/добавить">
+                </button>
             </section>
 
             <section class="elements">
@@ -45,57 +49,86 @@
                     <img class="elements__place" src="./images/karach.jpg" alt="место">
                     <div class="elements__info">
                         <h2 class="elements__name-place">
-                            Карачаевск
+                            Карачаев
                         </h2>
-                        <img class="elements__like" src="./images/Hard.svg" alt="сердце">
+                        <button class="elements__like" type="button">
+                            <svg class="elements__like-put" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" />
+                                </svg>    
+                        </button>
                     </div>
-                </div>
-                <div class="elements__content">
-                    <img class="elements__place" src="./images/karach.jpg" alt="место">
-                    <div class="elements__info">
-                        <h2 class="elements__name-place">
-                            Карачаевск
-                        </h2>
-                        <img class="elements__like" src="./images/Hard.svg" alt="сердце">
-                    </div>
-                </div>
-                <div class="elements__content">
-                    <img class="elements__place" src="./images/karach.jpg" alt="место">
-                    <div class="elements__info">
-                        <h2 class="elements__name-place">
-                            Карачаевск
-                        </h2>
-                        <img class="elements__like" src="./images/Hard.svg" alt="сердце">
-                    </div>                    
-                </div>
-                <div class="elements__content">
-                    <img class="elements__place" src="./images/karach.jpg" alt="место">
-                    <div class="elements__info">
-                        <h2 class="elements__name-place">
-                            Карачаевск
-                        </h2>
-                        <img class="elements__like" src="./images/Hard.svg" alt="сердце">
-                    </div>                    
-                </div>
-                <div class="elements__content">
-                    <img class="elements__place" src="./images/karach.jpg" alt="место">
-                    <div class="elements__info">
-                        <h2 class="elements__name-place">
-                            Карачаевск
-                        </h2>
-                        <img class="elements__like" src="./images/Hard.svg" alt="сердце">
-                    </div>                    
-                </div>
-                <div class="elements__content">
-                    <img class="elements__place" src="./images/karach.jpg" alt="место">
-                    <div class="elements__info">
-                        <h2 class="elements__name-place">
-                            Карачаевск
-                        </h2>
-                        <img class="elements__like" src="./images/Hard.svg" alt="сердце">
-                    </div>                    
                 </div>
 
+                <div class="elements__content">
+                    <img class="elements__place" src="./images/karach.jpg" alt="место">
+                    <div class="elements__info">
+                        <h2 class="elements__name-place">
+                            Карачаевск
+                        </h2>
+                        <button class="elements__like" type="button">
+                            <svg class="elements__like-put" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" />
+                                </svg>    
+                        </button>
+                    </div>
+                </div>
+
+                <div class="elements__content">
+                    <img class="elements__place" src="./images/karach.jpg" alt="место">
+                    <div class="elements__info">
+                        <h2 class="elements__name-place">
+                            Карачаевск
+                        </h2>
+                        <button class="elements__like" type="button">
+                            <svg class="elements__like-put" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" />
+                                </svg>    
+                        </button>
+                    </div>
+                </div>
+
+                <div class="elements__content">
+                    <img class="elements__place" src="./images/karach.jpg" alt="место">
+                    <div class="elements__info">
+                        <h2 class="elements__name-place">
+                            Карачаевск
+                        </h2>
+                        <button class="elements__like" type="button">
+                            <svg class="elements__like-put" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" />
+                                </svg>    
+                        </button>
+                    </div>
+                </div>
+
+                <div class="elements__content">
+                    <img class="elements__place" src="./images/karach.jpg" alt="место">
+                    <div class="elements__info">
+                        <h2 class="elements__name-place">
+                            Карачаевск
+                        </h2>
+                        <button class="elements__like" type="button">
+                            <svg class="elements__like-put" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" />
+                                </svg>    
+                        </button>
+                    </div>
+                </div>
+
+                <div class="elements__content">
+                    <img class="elements__place" src="./images/karach.jpg" alt="место">
+                    <div class="elements__info">
+                        <h2 class="elements__name-place">
+                            Карачаевск
+                        </h2>
+                        <button class="elements__like" type="button">
+                            <svg class="elements__like-put" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" />
+                                </svg>    
+                        </button>
+                    </div>
+                </div>
+              
             </section>
 
         </main>
