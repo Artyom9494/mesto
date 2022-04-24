@@ -2,8 +2,9 @@ let popup = document.querySelector('.popup');
 let editButton = document.querySelector('.profile__edit-button');
 let userName = document.querySelector('.profile__name');
 let userInfo = document.querySelector('.profile__info');
-let inputUserName = document.querySelector('.mod-name_mod-value');
-let inputUserInfo = document.querySelector('.mod-info_mod-value');
+let inputUserName = document.querySelector('.popup__input_mod-name-mod-value');
+let inputUserInfo = document.querySelector('.popup__input_mod-info-mod-value');
+// С такими модификатором как вы просили не пропускает на проверку ревьюеру пишет что не по БЭМ-name_mod-value
 let buttonSave = document.querySelector('.popup__button');
 let buttonClose = document.querySelector('.popup__close');
 let like = document.querySelector('.elements__like');
