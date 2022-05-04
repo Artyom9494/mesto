@@ -37,16 +37,28 @@ popup.addEventListener('click', function (event) {
     }
 });
 
-// второй попап доступы
+// второй попап доступы/////////////////////////////////////////////////////////////////
 let popupAdd = document.querySelector('.popup-add');
 let editElements = document.querySelector('.profile__addbutton');
 let inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
 let inputUrl = document.querySelector('.popup-add__input_value_url');
 let closePopupAdd = document.querySelector('.popup-add__close');
 let addBut = document.querySelector('.popup-add__button');
-// let elementsTemplate = document.querySelector('#elements').content;
+let elementsContent = document.querySelector('.elements');
+let addForm = popupAdd.querySelector('.popup-add__form');
 
+// второй попап функционал
+editElements.addEventListener('click', () => {
+  popupAdd.classList.add('popup-add_opened');
+})
 
+function closeAdd () {
+  popupAdd.classList.toggle('popup-add_opened');
+}
+
+closePopupAdd.addEventListener('click', closeAdd);
+
+//// add new elements
 const initialCards = [
     {
       name: 'Архыз',
@@ -73,31 +85,36 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-
-// второй попап функционал
-editElements.addEventListener('click', () => {
-    popupAdd.classList.add('popup-add_opened');
-})
-
-function closeAdd () {
-    popupAdd.classList.toggle('popup-add_opened');
-}
-
-closePopupAdd.addEventListener('click', closeAdd);
-
-//// add new elements
-
-function addElements () {
-    let elementsTemplate = document.querySelector('#elements').content;
-    let elements = elementsTemplate.querySelector('.elements').cloneNode(true);
+// Выводит массив 
+  initialCards.forEach(function (item) {
+    let elementsTemplate = elementsContent.querySelector('#elements').content;
+    let elements = elementsTemplate.querySelector('.elements__content').cloneNode(true);
     
-    elementsContainer.append(elements);
-}
+    elements.querySelector('.elements__name-place').textContent = item.name;
+    elements.querySelector('.elements__place').src = item.link;
 
-addBut.addEventListener('click', function () {
-    addElements();
-    closeAdd();
-}) 
+    elementsContent.append(elements);
+  });
+  
+  //добавляет элемент 
+   function addElements (evt) {
+     evt.preventDefault()
+      let elementsTemplate = elementsContent.querySelector('#elements').content;
+      let elements = elementsTemplate.querySelector('.elements__content').cloneNode(true);
+
+      elements.querySelector('.elements__name-place').textContent = inputNamePlase.value;
+      elements.querySelector('.elements__place').src = inputUrl.value;
+      
+      elements.querySelector('.elements__like').addEventListener('click', function (evt) {
+        evt.target.classList.toggle('elements__like_activ');
+      })
+
+      elementsContent.prepend(elements);
+      closeAdd();
+  }
+
+
+  addForm.addEventListener('submit', addElements);
 
 
 
