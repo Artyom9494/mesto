@@ -1,0 +1,21 @@
+.popup-add__close {
+    position: absolute;
+    background: none;
+    border: none;
+    top: -46px;
+    right: -46px;
+    opacity: 1;
+    transition: opacity 0.6s ease-in;
+    cursor: url(../../../images/Layer\ 1\ 2.png), pointer;
+}
+
+.popup-add__close:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 655px) {
+    .popup-add__close {
+    top: -35px;
+    right: -5px;
+    }
+}
