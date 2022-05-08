@@ -39,7 +39,7 @@ popup.addEventListener('click', function (event) {
 
 
 
-// 2 попап доступы/////////////////////////////////////////////////////////////////
+// 2 попап доступы
 let popupAdd = document.querySelector('.popup-add');
 let editElements = document.querySelector('.profile__addbutton');
 let inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
@@ -50,9 +50,6 @@ let addForm = popupAdd.querySelector('.popup-add__form');
 let eBody = document.querySelector('.elements');
 let eTemplate = document.querySelector('#elements').content;
 let eContent = document.querySelector('.elements__content');
-let removeBut = document.querySelector('.elements__remove');
-let like = document.querySelector('.elements__like')
-
 // второй попап функционал
 editElements.addEventListener('click', () => {
   popupAdd.classList.add('popup-add_opened');
@@ -61,19 +58,25 @@ editElements.addEventListener('click', () => {
 function closeAdd () {
   popupAdd.classList.toggle('popup-add_opened');
 }
-
 closePopupAdd.addEventListener('click', closeAdd);
-
 //3 попап 
 let popupImg = document.querySelector('.popup-img');
 let openImg = document.querySelector('.elements__place');
-let closePoImg = document.querySelector('.popup-img__close');
+let closePopupImg = document.querySelector('.popup-img__close');
 
 function closeImg () {
   popupImg.classList.remove('popup-img_opened')
 }
-closePoImg.addEventListener('click', closeImg);
-
+closePopupImg.addEventListener('click', closeImg);
+//open popup img
+let openPopupImg = (evt) => {
+  popupImg.classList.add('popup-img_opened');
+  let popupImgWindow = document.querySelector('.popup-img__window');
+  let popupImgName = document.querySelector('.popup-img__img-name');
+  popupImgWindow.src = evt.target.src;
+  popupImgWindow.alt = evt.target.alt;
+  popupImgName.textContent =evt.target.alt;
+}
 // add new elements
 const initialCards = [
   {
@@ -101,72 +104,83 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+//like function
+let  likeCards = (evt) => {
+    evt.target.classList.toggle('elements__like_activ');
+}
+let removeCards = (evt) => {
+  evt.target.closest('.elements__content').remove();
+}
 
 initialCards.forEach((item) => {
   let clone = eTemplate.querySelector('.elements__content').cloneNode(true);
-  clone.querySelector('.elements__name-place').textContent = item.name;
-  clone.querySelector('.elements__place').src = item.link;
-  clone.querySelector('.elements__place').alt = item.name;
+  let eNamePlace = clone.querySelector('.elements__name-place');
+  let ePlace = clone.querySelector('.elements__place');
+  let ePlaceOpen = clone.querySelector('.elements__place');
+  let like = clone.querySelector('.elements__like')
+  let removeBut = clone.querySelector('.elements__remove');
+  eNamePlace.textContent = item.name;
+  ePlace.src = item.link
+  ePlace.alt = item.name
 //like
-  clone.querySelector('.elements__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('elements__like_activ');
-  })
+  like.addEventListener('click', likeCards);
 //remove
-  clone.querySelector('.elements__remove').addEventListener('click', (evt) => {
-    evt.target.closest('.elements__content').remove();
-  })
-
+  removeBut.addEventListener('click', removeCards);
+//open popup img
+  ePlaceOpen.addEventListener('click', openPopupImg);
+//create cards
   eBody.append(clone);
 })
-
 
 function addElements (evt) {
      evt.preventDefault()
      let clone = eTemplate.querySelector('.elements__content').cloneNode(true);
-     
-     clone.querySelector('.elements__name-place').textContent = inputNamePlase.value;
-     clone.querySelector('.elements__place').src = inputUrl.value;
-     clone.querySelector('.elements__place').alt = inputNamePlase.value;
-//like
-     clone.querySelector('.elements__like').addEventListener('click', function (evt) {
-     evt.target.classList.toggle('elements__like_activ');
-    })
-     
-//remove
-    clone.querySelector('.elements__remove').addEventListener('click', (evt) => {
-    evt.target.closest('.elements__content').remove();
-    })
+     let eNamePlace = clone.querySelector('.elements__name-place');
+     let ePlace = clone.querySelector('.elements__place');
+     let ePlaceOpen = clone.querySelector('.elements__place');
+     let like = clone.querySelector('.elements__like')
+     let removeBut = clone.querySelector('.elements__remove');
+     eNamePlace.textContent = inputNamePlase.value;
+     ePlace.src = inputUrl.value;
+     ePlace.alt = inputNamePlase.value;
+     //like
+     like.addEventListener('click', likeCards);
+     //remove
+     removeBut.addEventListener('click', removeCards);
+     //open popup img
+     ePlaceOpen.addEventListener('click', openPopupImg);
+     //create cards
      eBody.prepend(clone);
      closeAdd();
+
+     inputUrl.value = '';
+     inputNamePlase.value = '';
   }
 
 addForm.addEventListener('submit', addElements);
 
 
 
-let arrImg = document.querySelectorAll('.elements__place')
-console.log(arrImg)
-let aImg = document.querySelector('.elements__place')
-let pImgWindow = document.querySelector('.popup-img__window');
-let pImgName = document.querySelector('.popup-img__img-name');
-let eNamePlace = document.querySelectorAll('.elements__name-place');
 
-let openPopupImg = () => {
-  popupImg.classList.add('popup-img_opened');
-}
 
-  arrImg.forEach( (item) => {
-    item.addEventListener('click', openPopupImg);
-    pImgWindow.src = aImg.src
-    console.log(aImg)
-  })
+////мой черновик )))
+
+// let arrImg = document.querySelectorAll('.elements__place')
+// console.log(arrImg)
+// let aImg = document.querySelector('.elements__place')
+// let pImgWindow = document.querySelector('.popup-img__window');
+// let pImgName = document.querySelector('.popup-img__img-name');
+// let eNamePlace = document.querySelector('.elements__name-place');
 
 
 
-
-
-
-
+//   arrImg.forEach( (item) => {
+//     item.addEventListener('click', openPopupImg);
+//     pImgWindow.src = item.src;
+//     pImgWindow.alt = item.alt;
+//     pImgName.textContent = eNamePlace.innerText;
+//     console.log(aImg)
+//   })
 
 
 
