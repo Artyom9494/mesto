@@ -1,31 +1,34 @@
 // первый попап доступы
-let popup = document.querySelector('.popup');
-let editButton = document.querySelector('.profile__edit-button');
-let userName = document.querySelector('.profile__name');
-let userInfo = document.querySelector('.profile__info');
-let inputUserName = document.querySelector('.popup__input_value_name');
-let inputUserInfo = document.querySelector('.popup__input_value_info');
-let buttonClose = document.querySelector('.popup__close');
-let formElement = document.querySelector('.popup__form')
+const popup = document.querySelector('.popup_profile');
+const Buttonedit = document.querySelector('.profile__edit-button');
+const userName = document.querySelector('.profile__name');
+const userInfo = document.querySelector('.profile__info');
+const inputUserName = document.querySelector('.popup__input_value_name');
+const inputUserInfo = document.querySelector('.popup__input_value_info');
+const buttonClose = document.querySelector('.popup__close');
+const formElement = document.querySelector('.popup__form')
 
-// первый попап функционал
-editButton.addEventListener('click', function () {
-    inputUserName.value = userName.textContent;
-    inputUserInfo.value = userInfo.textContent;
-    popup.classList.add('popup_opened');
-});
-
-function closePopup () {
-    popup.classList.toggle('popup_opened');
+function popupOpen () {
+  popup.classList.add('popup_opened');
+}
+function popupClose () {
+  popup.classList.remove('popup_opened');
 };
 
-buttonClose.addEventListener('click', closePopup);
+// первый попап функционал
+Buttonedit.addEventListener('click', function () {
+    inputUserName.value = userName.textContent;
+    inputUserInfo.value = userInfo.textContent;
+    popupOpen();
+});
+
+buttonClose.addEventListener('click', popupClose);
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
     userName.textContent = inputUserName.value;
     userInfo.textContent = inputUserInfo.value;
-    closePopup();
+    popupClose();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -33,23 +36,23 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 popup.addEventListener('click', function (event) {
     if(event.target == event.currentTarget) {
-        closePopup();
+      popupClose();
     }
 });
 
 
 
 // 2 попап доступы
-let popupAdd = document.querySelector('.popup-add');
-let editElements = document.querySelector('.profile__addbutton');
-let inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
-let inputUrl = document.querySelector('.popup-add__input_value_url');
-let closePopupAdd = document.querySelector('.popup-add__close');
-let addBut = document.querySelector('.popup-add__button');
-let addForm = popupAdd.querySelector('.popup-add__form');
-let eBody = document.querySelector('.elements');
-let eTemplate = document.querySelector('#elements').content;
-let eContent = document.querySelector('.elements__content');
+const popupAdd = document.querySelector('.popup-add');
+const editElements = document.querySelector('.profile__addbutton');
+const inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
+const inputUrl = document.querySelector('.popup-add__input_value_url');
+const closePopupAdd = document.querySelector('.popup-add__close');
+const addBut = document.querySelector('.popup-add__button');
+const addForm = popupAdd.querySelector('.popup-add__form');
+const eBody = document.querySelector('.elements');
+const eTemplate = document.querySelector('#elements').content;
+const eContent = document.querySelector('.elements__content');
 // второй попап функционал
 editElements.addEventListener('click', () => {
   popupAdd.classList.add('popup-add_opened');
@@ -60,19 +63,19 @@ function closeAdd () {
 }
 closePopupAdd.addEventListener('click', closeAdd);
 //3 попап 
-let popupImg = document.querySelector('.popup-img');
-let openImg = document.querySelector('.elements__place');
-let closePopupImg = document.querySelector('.popup-img__close');
+const popupImg = document.querySelector('.popup-img');
+const imgOpen = document.querySelector('.elements__place');
+const closePopupImg = document.querySelector('.popup-img__close');
 
 function closeImg () {
   popupImg.classList.remove('popup-img_opened')
 }
 closePopupImg.addEventListener('click', closeImg);
 //open popup img
-let openPopupImg = (evt) => {
+const openPopupImg = (evt) => {
   popupImg.classList.add('popup-img_opened');
-  let popupImgWindow = document.querySelector('.popup-img__window');
-  let popupImgName = document.querySelector('.popup-img__img-name');
+  const popupImgWindow = document.querySelector('.popup-img__window');
+  const popupImgName = document.querySelector('.popup-img__img-name');
   popupImgWindow.src = evt.target.src;
   popupImgWindow.alt = evt.target.alt;
   popupImgName.textContent =evt.target.alt;
@@ -105,20 +108,20 @@ const initialCards = [
   }
 ];
 //like function
-let  likeCards = (evt) => {
+const  likeCards = (evt) => {
     evt.target.classList.toggle('elements__like_activ');
 }
-let removeCards = (evt) => {
+const removeCards = (evt) => {
   evt.target.closest('.elements__content').remove();
 }
 
 initialCards.forEach((item) => {
-  let clone = eTemplate.querySelector('.elements__content').cloneNode(true);
-  let eNamePlace = clone.querySelector('.elements__name-place');
-  let ePlace = clone.querySelector('.elements__place');
-  let ePlaceOpen = clone.querySelector('.elements__place');
-  let like = clone.querySelector('.elements__like')
-  let removeBut = clone.querySelector('.elements__remove');
+  const clone = eTemplate.querySelector('.elements__content').cloneNode(true);
+  const eNamePlace = clone.querySelector('.elements__name-place');
+  const ePlace = clone.querySelector('.elements__place');
+  const ePlaceOpen = clone.querySelector('.elements__place');
+  const like = clone.querySelector('.elements__like')
+  const removeBut = clone.querySelector('.elements__remove');
   eNamePlace.textContent = item.name;
   ePlace.src = item.link
   ePlace.alt = item.name
@@ -134,12 +137,11 @@ initialCards.forEach((item) => {
 
 function addElements (evt) {
      evt.preventDefault()
-     let clone = eTemplate.querySelector('.elements__content').cloneNode(true);
-     let eNamePlace = clone.querySelector('.elements__name-place');
-     let ePlace = clone.querySelector('.elements__place');
-     let ePlaceOpen = clone.querySelector('.elements__place');
-     let like = clone.querySelector('.elements__like')
-     let removeBut = clone.querySelector('.elements__remove');
+     const clone = eTemplate.querySelector('.elements__content').cloneNode(true);
+     const eNamePlace = clone.querySelector('.elements__name-place');
+     const ePlace = clone.querySelector('.elements__place');
+     const like = clone.querySelector('.elements__like')
+     const removeBut = clone.querySelector('.elements__remove');
      eNamePlace.textContent = inputNamePlase.value;
      ePlace.src = inputUrl.value;
      ePlace.alt = inputNamePlase.value;
@@ -148,7 +150,7 @@ function addElements (evt) {
      //remove
      removeBut.addEventListener('click', removeCards);
      //open popup img
-     ePlaceOpen.addEventListener('click', openPopupImg);
+     ePlace.addEventListener('click', openPopupImg);
      //create cards
      eBody.prepend(clone);
      closeAdd();
