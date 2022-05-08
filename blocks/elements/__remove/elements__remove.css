@@ -1,0 +1,16 @@
+.elements__remove {
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 19px;
+    width: 18px;
+    padding: 0;
+    transition: opacity 0.6s ease-in;
+    cursor: url(../../../images/Layer\ 1\ 2.png), pointer;
+    background: url(../../../images/Group.svg) no-repeat ;
+}
+
+.elements__remove:hover {
+    opacity: .6;
+}
