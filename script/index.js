@@ -51,8 +51,7 @@ const elementsEdit = document.querySelector('.profile__addbutton');
 const inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
 const inputUrl = document.querySelector('.popup-add__input_value_url');
 const closePopupAdd = document.querySelector('.popup-add__close');
-const addBut = document.querySelector('.popup-add__button');
-const addForm = popupAdd.querySelector('.popup-add__form');
+const formAdd = popupAdd.querySelector('.popup-add__form');
 const eBody = document.querySelector('.elements');
 const eTemplate = document.querySelector('#elements').content;
 const eContent = document.querySelector('.elements__content');
@@ -68,15 +67,15 @@ closePopupAdd.addEventListener('click', () => {
 const popupImg = document.querySelector('.popup-img');
 const imgOpen = document.querySelector('.elements__place');
 const closePopupImg = document.querySelector('.popup-img__close');
+const popupImgWindow = document.querySelector('.popup-img__window');
+const popupImgName = document.querySelector('.popup-img__img-name');
 
 closePopupImg.addEventListener('click', () => {
   popupClose(popupImg)
 });
 //open popup img
-const openPopupImg = (evt) => {
+const popupImgOpen = (evt) => {
   popupOpen(popupImg);
-  const popupImgWindow = document.querySelector('.popup-img__window');
-  const popupImgName = document.querySelector('.popup-img__img-name');
   popupImgWindow.src = evt.target.src;
   popupImgWindow.alt = evt.target.alt;
   popupImgName.textContent =evt.target.alt;
@@ -85,7 +84,7 @@ const openPopupImg = (evt) => {
 const  likeCards = (evt) => {
     evt.target.classList.toggle('elements__like_activ');
 }
-
+//remove function
 const removeCards = (evt) => {
   evt.target.closest('.elements__content').remove();
 }
@@ -104,11 +103,11 @@ const cardsCreate = (itName, itLink) => {
 //remove
   removeBut.addEventListener('click', removeCards);
 //open popup img
-  ePlace.addEventListener('click', openPopupImg);
+  ePlace.addEventListener('click', popupImgOpen);
 //create cards
   return clone;
 }  
-
+// open stsrt window card elements
 initialCards.forEach((item) => {
   eBody.append(cardsCreate(item.name, item.link));
 })
@@ -123,4 +122,4 @@ function addElements (evt) {
      inputNamePlase.value = '';
   }
 
-addForm.addEventListener('submit', addElements);
+  formAdd.addEventListener('submit', addElements);
