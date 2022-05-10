@@ -1,8 +1,8 @@
 // первый попап доступы
 const popups = document.querySelectorAll('.popup');
-const popup = document.querySelector('.popup_profile');
+const popupProfile = document.querySelector('.popup_profile');
 const popupAddCards = document.querySelector('.popup-add');
-const ButtonEdit = document.querySelector('.profile__edit-button');
+const buttonEdit = document.querySelector('.profile__edit-button');
 const userName = document.querySelector('.profile__name');
 const userInfo = document.querySelector('.profile__info');
 const inputUserName = document.querySelector('.popup__input_value_name');
@@ -18,21 +18,21 @@ function popupClose (item) {
 };
 
 // первый попап функционал
-ButtonEdit.addEventListener('click', function () {
+buttonEdit.addEventListener('click', function () {
     inputUserName.value = userName.textContent;
     inputUserInfo.value = userInfo.textContent;
-    popupOpen(popup);
+    popupOpen(popupProfile);
 });
 
 buttonClose.addEventListener('click', () => {
-  popupClose(popup);
+  popupClose(popupProfile);
 });
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
     userName.textContent = inputUserName.value;
     userInfo.textContent = inputUserInfo.value;
-    popupClose(popup);
+    popupClose(popupProfile);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -50,7 +50,7 @@ const popupAdd = document.querySelector('.popup-add');
 const elementsEdit = document.querySelector('.profile__addbutton');
 const inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
 const inputUrl = document.querySelector('.popup-add__input_value_url');
-const closePopupAdd = document.querySelector('.popup-add__close');
+const popupAddClose = document.querySelector('.popup-add__close');
 const formAdd = popupAdd.querySelector('.popup-add__form');
 const eBody = document.querySelector('.elements');
 const eTemplate = document.querySelector('#elements').content;
@@ -60,7 +60,7 @@ elementsEdit.addEventListener('click', () => {
   popupOpen(popupAdd);
 })
 
-closePopupAdd.addEventListener('click', () => {
+popupAddClose.addEventListener('click', () => {
   popupClose(popupAdd)
 });
 //3 попап 
@@ -74,7 +74,7 @@ closePopupImg.addEventListener('click', () => {
   popupClose(popupImg)
 });
 //open popup img
-const popupImgOpen = (evt) => {
+const OpenPopupImg = (evt) => {
   popupOpen(popupImg);
   popupImgWindow.src = evt.target.src;
   popupImgWindow.alt = evt.target.alt;
@@ -89,7 +89,7 @@ const removeCards = (evt) => {
   evt.target.closest('.elements__content').remove();
 }
 // add new elements function
-const cardsCreate = (itName, itLink) => {
+const createCards = (itName, itLink) => {
   const clone = eTemplate.querySelector('.elements__content').cloneNode(true);
   const eNamePlace = clone.querySelector('.elements__name-place');
   const ePlace = clone.querySelector('.elements__place');
@@ -103,19 +103,19 @@ const cardsCreate = (itName, itLink) => {
 //remove
   removeBut.addEventListener('click', removeCards);
 //open popup img
-  ePlace.addEventListener('click', popupImgOpen);
+  ePlace.addEventListener('click', OpenPopupImg);
 //create cards
   return clone;
 }  
 // open stsrt window card elements
 initialCards.forEach((item) => {
-  eBody.append(cardsCreate(item.name, item.link));
+  eBody.append(createCards(item.name, item.link));
 })
 // add new elements
 function addElements (evt) {
      evt.preventDefault();
 
-    eBody.prepend(cardsCreate(inputNamePlase.value, inputUrl.value));
+    eBody.prepend(createCards(inputNamePlase.value, inputUrl.value));
      popupClose(popupAdd);
 
      inputUrl.value = '';
