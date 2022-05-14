@@ -74,7 +74,7 @@ closePopupImg.addEventListener('click', () => {
   popupClose(popupImg)
 });
 //open popup img
-const OpenPopupImg = (evt) => {
+const openPopupImg = (evt) => {
   popupOpen(popupImg);
   popupImgWindow.src = evt.target.src;
   popupImgWindow.alt = evt.target.alt;
@@ -103,7 +103,7 @@ const createCards = (itName, itLink) => {
 //remove
   removeBut.addEventListener('click', removeCards);
 //open popup img
-  ePlace.addEventListener('click', OpenPopupImg);
+  ePlace.addEventListener('click', openPopupImg);
 //create cards
   return clone;
 }  
