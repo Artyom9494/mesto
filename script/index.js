@@ -39,7 +39,7 @@ formElement.addEventListener('submit', formSubmitHandler);
 // закрытие всех попапов на оверлей
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
-    if(evt.target == evt.currentTarget) {
+    if(evt.target === evt.currentTarget) {
       popupClose(evt.target);
     }
   })
@@ -123,3 +123,12 @@ function addElements (evt) {
   }
 
   formAdd.addEventListener('submit', addElements);
+
+///sprint 4
+//close popup ESC
+document.addEventListener('keydown', function(evt) {
+  if (evt.key === 'Escape') {
+    document.querySelector('.popup_opened').classList.remove('popup_opened')
+  }
+})
+
