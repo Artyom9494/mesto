@@ -126,7 +126,7 @@ function addElements (evt) {
 
 ///sprint 4
 //close popup ESC
-document.addEventListener('keydown', function(evt) {
+const closePopupESC = document.addEventListener('keydown', function(evt) {
   if (evt.key === 'Escape') {
     document.querySelector('.popup_opened').classList.remove('popup_opened')
   }
