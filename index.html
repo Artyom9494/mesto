@@ -32,7 +32,6 @@
             </section>
 
             <section class="elements">
-<!-- ///////////////////////////////////////////////// -->
                 <template id="elements">    
                     <div class="elements__content">
                         <img class="elements__place" src="./images/karach.jpg" alt="место">
@@ -41,14 +40,11 @@
                                 Карачаев
                             </h2>
                             <button class="elements__like" type="button">
-                                <!-- <img class="elements__like-img" src="./images/hard.svg" alt="сердце">  -->
                             </button>
                             <button class="elements__remove"></button>
                         </div>
                     </div>
                 </template>
-<!-- /////////////////////////////////////////////////// -->
-              
             </section>
 
         </main>
@@ -70,10 +66,10 @@
                     <span class="form__input-error name-input-error"></span>
                 </table>
                 <table class="form__field">
-                    <input class="popup__input popup__input_value_info" type="text" placeholder="Введите информацию о себе" minlength="2" maxlength="200" required>
+                    <input class="popup__input popup__input_value_info" id="info-input" type="text" placeholder="Введите информацию о себе" minlength="2" maxlength="200" required>
                     <span class="form__input-error info-input-error"></span>
                 </table>
-                <button class="popup__button" type="submit">Сохранить</button>
+                <button class="popup__button form__submit" type="submit">Сохранить</button>
             </form>
 
             <button class="popup__close" type="button">
@@ -87,14 +83,14 @@
             <h2 class="popup-add__title">Новое место</h2>
             <form class="form popup-add__form" action="#" name="popup-id" novalidate>
                 <table class="form__field">
-                    <input class="popup__input popup-add__input popup-add__input_value_name-plase" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+                    <input class="popup__input popup-add__input popup-add__input_value_name-plase" id="name-plase-input" type="text" placeholder="Название" minlength="2" maxlength="30" required>
                     <span class="form__input-error name-plase-input-error"></span>
                 </table>
                 <table class="form__field">
-                    <input class="popup__input popup-add__input popup-add__input_value_url" type="url" placeholder="Ссылка на картинку" required>
+                    <input class="popup__input popup-add__input popup-add__input_value_url" id="url-input" type="url" placeholder="Ссылка на картинку" required>
                     <span class="form__input-error url-input-error"></span>
                 </table>
-                <button class="popup-add__button" type="submit">Создать</button>
+                <button class="popup-add__button form__submit" type="submit">Создать</button>
             </form>
 
             <button class="popup-add__close" type="button">

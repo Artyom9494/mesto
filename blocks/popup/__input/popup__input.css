@@ -18,18 +18,15 @@
 
 @media screen and (max-width: 655px) {
     .popup__input {
-        margin: 0 auto 28px;
+        margin: 0 auto;
         width: 238px;
+    }
+
+    .popup__input:last-of-type {
+        margin: 30px auto 0;
     }
 }
 
 .form__input_type_error {
     border-bottom-color: red;
-  
-    /* Нижняя рамка становится красной всякий раз, 
-    когда введённые данные некорректны */
   } 
-
-.form__input-error_active {
-    color: rebeccapurple;
-}
