@@ -64,9 +64,15 @@
     <div class="popup popup_profile">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" action="#" name="popup-id" novalidate>
-                <input class="popup__input popup__input_value_name" type="text" placeholder="Введите имя" minlength="2" maxlength="40" required> 
-                <input class="popup__input popup__input_value_info" type="text" placeholder="Введите информацию о себе" minlength="2" maxlength="200" required>
+            <form class="form popup__form" action="#" name="popup-id" novalidate>
+                <table class="form__field">
+                    <input class="popup__input popup__input_value_name" id="name-input" type="text" placeholder="Введите имя" minlength="2" maxlength="40" required>
+                    <span class="form__input-error name-input-error"></span>
+                </table>
+                <table class="form__field">
+                    <input class="popup__input popup__input_value_info" type="text" placeholder="Введите информацию о себе" minlength="2" maxlength="200" required>
+                    <span class="form__input-error info-input-error"></span>
+                </table>
                 <button class="popup__button" type="submit">Сохранить</button>
             </form>
 
@@ -79,9 +85,15 @@
     <div class="popup popup-add">
         <div class="popup-add__container">
             <h2 class="popup-add__title">Новое место</h2>
-            <form class="popup-add__form" action="#" name="popup-id">
-                <input class="popup-add__input popup-add__input_value_name-plase" type="text" placeholder="Название">
-                <input class="popup-add__input popup-add__input_value_url" type="url" placeholder="Ссылка на картинку">
+            <form class="form popup-add__form" action="#" name="popup-id" novalidate>
+                <table class="form__field">
+                    <input class="popup__input popup-add__input popup-add__input_value_name-plase" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+                    <span class="form__input-error name-plase-input-error"></span>
+                </table>
+                <table class="form__field">
+                    <input class="popup__input popup-add__input popup-add__input_value_url" type="url" placeholder="Ссылка на картинку" required>
+                    <span class="form__input-error url-input-error"></span>
+                </table>
                 <button class="popup-add__button" type="submit">Создать</button>
             </form>
 
