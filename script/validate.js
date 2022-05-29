@@ -54,7 +54,6 @@ const hasInvalidInput = (inputList) => {
   };
 
 const toggleButtonState = (inputList, buttonElement) => {
-   
     if (hasInvalidInput(inputList)) {
       buttonElement.classList.add('form__submit_inactive');
     } else {
@@ -62,4 +61,11 @@ const toggleButtonState = (inputList, buttonElement) => {
     }
   };
 
-  enableValidation()
+  enableValidation({
+    formSelector: '.form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.form__submit',
+    inactiveButtonClass: 'form__submit_inactive',
+    inputErrorClass: 'form__input_type_error',
+    errorClass: 'form__input-error_active'
+  }); 
