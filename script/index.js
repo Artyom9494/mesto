@@ -115,11 +115,15 @@ initialCards.forEach((item) => {
 function addElements (evt) {
      evt.preventDefault();
 
+     const buttonInactive = popupAdd.querySelector('.form__submit')
+
      elementBody.prepend(createCards(inputNamePlase.value, inputUrl.value));
      popupClose(popupAdd);
 
-     inputUrl.value = '';
-     inputNamePlase.value = '';
+     inputUrl.value.reset();
+     inputNamePlase.value.reset();
+     buttonInactive.classList.add('form__submit_inactive');
+     buttonInactive.setAttribute("disabled", "disabled");
   }
 
   formAdd.addEventListener('submit', addElements);
