@@ -55,6 +55,7 @@ const formAdd = popupAdd.querySelector('.popup-add__form');
 const elementBody = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#elements').content;
 const elementContent = document.querySelector('.elements__content');
+const popupAddButton = document.querySelector('.popup-add__button');
 // второй попап функционал
 elementsEdit.addEventListener('click', () => {
   popupOpen(popupAdd);
@@ -115,15 +116,13 @@ initialCards.forEach((item) => {
 function addElements (evt) {
      evt.preventDefault();
 
-     const buttonInactive = popupAdd.querySelector('.form__submit')
-
      elementBody.prepend(createCards(inputNamePlase.value, inputUrl.value));
      popupClose(popupAdd);
 
-     inputUrl.value.reset();
-     inputNamePlase.value.reset();
-     buttonInactive.classList.add('form__submit_inactive');
-     buttonInactive.setAttribute("disabled", "disabled");
+     inputUrl.value = "";
+     inputNamePlase.value = "";
+     
+     disableSubmitButton(popupAddButton, popupAddButton);
   }
 
   formAdd.addEventListener('submit', addElements);

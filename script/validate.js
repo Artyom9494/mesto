@@ -53,10 +53,14 @@ const hasInvalidInput = (inputList) => {
     })
   };
 
+function disableSubmitButton (addInactiv, addDisabled) {
+  addInactiv.classList.add('form__submit_inactive');
+  addDisabled.setAttribute("disabled", "disabled");
+}
+
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add('form__submit_inactive');
-      buttonElement.setAttribute("disabled", "disabled");
+      disableSubmitButton(buttonElement, buttonElement);
     } else {
       buttonElement.classList.remove('form__submit_inactive');
       buttonElement.removeAttribute("disabled")
