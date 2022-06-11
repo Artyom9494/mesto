@@ -94,7 +94,7 @@ const createCards = (itName, itLink) => {
   const clone = elementTemplate.querySelector('.elements__content').cloneNode(true);
   const elementNamePlace = clone.querySelector('.elements__name-place');
   const elementPlace = clone.querySelector('.elements__place');
-  const like = clone.querySelector('.elements__like')
+  const like = clone.querySelector('.elements__like');
   const buttonRemove = clone.querySelector('.elements__remove');
   elementNamePlace.textContent = itName;
   elementPlace.src = itLink;
