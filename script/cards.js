@@ -24,11 +24,14 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
+  const popupsImage = document.querySelector('.popup-img');
+  const popupImgWindow2 = document.querySelector('.popup-img__window');
+  const popupImgName2 = document.querySelector('.popup-img__img-name');
 
   class Card {
-    constructor(name, link) {
-      this._mame = name;
-      this._link = link;
+    constructor(data) {
+      this._name = data.name;
+      this._link = data.link;
     }
      _getCards() {
       const elementTemplate = document.querySelector('#elements').content;
@@ -38,13 +41,16 @@ const initialCards = [
     generateCard() {
       this._element = this._getCards();
       this._setEventLikeListeners();
+      this._setHandlePopupImageClick();
+      this._setHandleRemoveClick();
 
-      this._element.querySelector('.elements__name-place').textContent = this._mame;
+      this._element.querySelector('.elements__name-place').textContent = this._name;
       this._element.querySelector('.elements__place').src = this._link;
-      this._element.querySelector('.elements__place').alt = this._mame;
+      this._element.querySelector('.elements__place').alt = this._name;
 
       return this._element;
     }
+    //function LIKE
     _setEventLikeListeners() {
       this._element.querySelector('.elements__like').addEventListener('click', () => {
         this._handleLikeClick();
@@ -53,10 +59,32 @@ const initialCards = [
     _handleLikeClick() {
       this._element.querySelector('.elements__like').classList.toggle('elements__like_activ');
     }
+    //function openPopupImage
+    _setHandlePopupImageClick() {
+      this._element.querySelector('.elements__place').addEventListener('click', () => {
+        this._handlePopupImageClick();
+      });
+    }
+    _handlePopupImageClick() {
+      popupImgWindow2.src = this._link;
+      popupImgWindow2.alt = this._name;
+      popupImgName2.textContent = this._name;
+      popupsImage.classList.add('popup_opened');
+    }
+    //function REMOVE CARDS
+    _setHandleRemoveClick() {
+      this._element.querySelector('.elements__remove').addEventListener('click', () => {
+        this._handleRemoveClick();
+      })
+    }
+    _handleRemoveClick() {
+      // const h = document.querySelector('.elements__content');
+      this._element.closest('.elements__content').remove();
+    }
 }
 
 initialCards.forEach((item) => {
-  const card = new Card(item.name, item.link);
+  const card = new Card(item);
   const cartElement = card.generateCard();
   document.querySelector('.elements').append(cartElement);
 });

@@ -8,7 +8,7 @@ const userInfo = document.querySelector('.profile__info');
 const inputUserName = document.querySelector('.popup__input_value_name');
 const inputUserInfo = document.querySelector('.popup__input_value_info');
 const buttonClosePopupProfile = document.querySelector('.popup__close');
-const formElementProfile = document.querySelector('.popup__form')
+const formElementProfile = document.querySelector('.popup__form');
 
 function popupOpen (item) {
   item.classList.add('popup_opened');
@@ -79,7 +79,7 @@ const openPopupImg = (evt) => {
   popupOpen(popupImage);
   popupImgWindow.src = evt.target.src;
   popupImgWindow.alt = evt.target.alt;
-  popupImgName.textContent =evt.target.alt;
+  popupImgName.textContent = evt.target.alt;
 }
 //like function
 const  likeCards = (evt) => {
