@@ -27,6 +27,7 @@ const initialCards = [
   const popupsImage = document.querySelector('.popup-img');
   const popupImgWindow2 = document.querySelector('.popup-img__window');
   const popupImgName2 = document.querySelector('.popup-img__img-name');
+  const popupImageClose2 = document.querySelector('.popup-img__close');
 
   class Card {
     constructor(data) {
@@ -43,6 +44,7 @@ const initialCards = [
       this._setEventLikeListeners();
       this._setHandlePopupImageClick();
       this._setHandleRemoveClick();
+      this._setHandleClosePopupClick();
 
       this._element.querySelector('.elements__name-place').textContent = this._name;
       this._element.querySelector('.elements__place').src = this._link;
@@ -62,14 +64,23 @@ const initialCards = [
     //function openPopupImage
     _setHandlePopupImageClick() {
       this._element.querySelector('.elements__place').addEventListener('click', () => {
-        this._handlePopupImageClick();
+        this._handleOpenPopupImageClick();
       });
     }
-    _handlePopupImageClick() {
+    _handleOpenPopupImageClick() {
       popupImgWindow2.src = this._link;
       popupImgWindow2.alt = this._name;
       popupImgName2.textContent = this._name;
       popupsImage.classList.add('popup_opened');
+    }
+    //function closePopups
+    _setHandleClosePopupClick() {
+      popupImageClose2.addEventListener('click', () => {
+        this._handleClosePopupClick();
+      });
+    }
+    _handleClosePopupClick() {
+      popupsImage.classList.remove('popup_opened');
     }
     //function REMOVE CARDS
     _setHandleRemoveClick() {
@@ -78,9 +89,13 @@ const initialCards = [
       })
     }
     _handleRemoveClick() {
-      // const h = document.querySelector('.elements__content');
       this._element.closest('.elements__content').remove();
     }
+    //function createCardElemements
+    __handleCreateCardsElementsClick() {
+      
+    }
+
 }
 
 initialCards.forEach((item) => {
