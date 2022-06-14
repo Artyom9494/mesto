@@ -9,6 +9,23 @@ const inputUserName = document.querySelector('.popup__input_value_name');
 const inputUserInfo = document.querySelector('.popup__input_value_info');
 const buttonClosePopupProfile = document.querySelector('.popup__close');
 const formElementProfile = document.querySelector('.popup__form');
+// 2 попап доступы
+const popupAdd = document.querySelector('.popup-add');
+const elementsEdit = document.querySelector('.profile__addbutton');
+const inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
+const inputUrl = document.querySelector('.popup-add__input_value_url');
+const popupAddClose = document.querySelector('.popup-add__close');
+const formAdd = popupAdd.querySelector('.popup-add__form');
+const elementBody = document.querySelector('.elements');
+const elementTemplate = document.querySelector('#elements').content;
+const elementContent = document.querySelector('.elements__content');
+const popupAddButton = document.querySelector('.popup-add__button');
+//3 попап 
+const popupImage = document.querySelector('.popup-img');
+const imageOpen = document.querySelector('.elements__place');
+const popupImageClose = document.querySelector('.popup-img__close');
+const popupImgWindow = document.querySelector('.popup-img__window');
+const popupImgName = document.querySelector('.popup-img__img-name');
 
 function popupOpen (item) {
   item.classList.add('popup_opened');
@@ -44,18 +61,6 @@ popups.forEach((item) => {
     }
   })
 })
-
-// 2 попап доступы
-const popupAdd = document.querySelector('.popup-add');
-const elementsEdit = document.querySelector('.profile__addbutton');
-const inputNamePlase = document.querySelector('.popup-add__input_value_name-plase');
-const inputUrl = document.querySelector('.popup-add__input_value_url');
-const popupAddClose = document.querySelector('.popup-add__close');
-const formAdd = popupAdd.querySelector('.popup-add__form');
-const elementBody = document.querySelector('.elements');
-const elementTemplate = document.querySelector('#elements').content;
-const elementContent = document.querySelector('.elements__content');
-const popupAddButton = document.querySelector('.popup-add__button');
 // второй попап функционал
 elementsEdit.addEventListener('click', () => {
   popupOpen(popupAdd);
@@ -64,12 +69,6 @@ elementsEdit.addEventListener('click', () => {
 popupAddClose.addEventListener('click', () => {
   popupClose(popupAdd)
 });
-//3 попап 
-const popupImage = document.querySelector('.popup-img');
-const imageOpen = document.querySelector('.elements__place');
-const popupImageClose = document.querySelector('.popup-img__close');
-const popupImgWindow = document.querySelector('.popup-img__window');
-const popupImgName = document.querySelector('.popup-img__img-name');
 
 popupImageClose.addEventListener('click', () => {
   popupClose(popupImage)
@@ -108,7 +107,7 @@ elementPlace.addEventListener('click', openPopupImg);
 //create cards
   return clone;
 }  
-// open stsrt window card elements
+// open start window card elements
 initialCards.forEach((item) => {
   elementBody.append(createCards(item.name, item.link));
 })
@@ -126,8 +125,6 @@ function addElements (evt) {
   }
 
   formAdd.addEventListener('submit', addElements);
-
-///sprint 4
 //close popup ESC
 const closePopupESC = document.addEventListener('keydown', function(evt) {
   if (evt.key === 'Escape') {
