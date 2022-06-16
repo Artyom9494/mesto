@@ -109,8 +109,10 @@ elementPlace.addEventListener('click', openPopupImg);
 }  
 // open start window card elements
 initialCards.forEach((item) => {
-  elementBody.append(createCards(item.name, item.link));
-})
+  const card = new Card(item, '#elements');
+  const cartElement = card.generateCard();
+  document.querySelector('.elements').append(cartElement);
+});
 // add new elements
 function addElements (evt) {
      evt.preventDefault();
