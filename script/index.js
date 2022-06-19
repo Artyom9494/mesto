@@ -17,11 +17,9 @@ const inputUrl = document.querySelector('.popup-add__input_value_url');
 const popupAddClose = document.querySelector('.popup-add__close');
 const formAdd = popupAdd.querySelector('.popup-add__form');
 const elementBody = document.querySelector('.elements');
-const elementTemplate = document.querySelector('#elements').content;
 const popupAddButton = document.querySelector('.popup-add__button');
 //3 попап 
 export const popupImage = document.querySelector('.popup-img');
-const imageOpen = document.querySelector('.elements__place');
 const popupImageClose = document.querySelector('.popup-img__close');
 export const popupImgWindow = document.querySelector('.popup-img__window');
 export const popupImgName = document.querySelector('.popup-img__img-name');
@@ -53,6 +51,15 @@ const initialCards = [
   }
 ];
 
+const dataValidator = {
+        formSelector: '.form',
+        inputSelector: '.popup__input',
+        submitButtonSelector: '.form__submit',
+        inactiveButtonClass: 'form__submit_inactive',
+        inputErrorClass: 'form__input_type_error',
+        errorClass: 'form__input-error_active'
+      }
+
 function popupOpen (item) {
   item.classList.add('popup_opened');
 }
@@ -80,7 +87,6 @@ function formSubmitHandlerProfile (evt) {
 
 formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 
-// второй попап функционал
 elementsEdit.addEventListener('click', () => {
   popupOpen(popupAdd);
 })
@@ -111,7 +117,7 @@ function addElements (evt) {
 
     formAdd.reset();
      
-     disableSubmitButton(popupAddButton);
+     disableSubmitButton(popupAddButton, popupAddButton);
   }
 
   formAdd.addEventListener('submit', addElements);
@@ -131,4 +137,3 @@ const closePopupESC = document.addEventListener('keydown', function(evt) {
     popupClose(popupProfile) || popupClose(popupAdd) || popupClose(popupImage);
   }
 });
-
