@@ -10,6 +10,7 @@ const inputUserName = document.querySelector('.popup__input_value_name');
 const inputUserInfo = document.querySelector('.popup__input_value_info');
 const buttonClosePopupProfile = document.querySelector('.popup__close');
 const formElementProfile = document.querySelector('.popup__form');
+const popupProfileButton = document.querySelector('.popup__button');
 // 2 попап доступы
 const popupAdd = document.querySelector('.popup-add');
 const elementsEdit = document.querySelector('.profile__addbutton');
@@ -84,6 +85,7 @@ function formSubmitHandlerProfile (evt) {
     userName.textContent = inputUserName.value;
     userInfo.textContent = inputUserInfo.value;
     popupClose(popupProfile);
+    formElementProfileValidator.disableSubmitButton(popupProfileButton, popupProfileButton);
 }
 
 formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
@@ -118,7 +120,7 @@ function addElements (evt) {
 
     formAdd.reset();
      
-    //  disableSubmitButton(popupAddButton, popupAddButton);
+    formAddValidator.disableSubmitButton(popupAddButton, popupAddButton);
   }
 
   formAdd.addEventListener('submit', addElements);
