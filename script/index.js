@@ -1,3 +1,4 @@
+import FormValidator from "./FormValidator.js";
 import { Card } from "./cards.js";
 // 1 попап доступы
 const popups = document.querySelectorAll('.popup');
@@ -117,11 +118,16 @@ function addElements (evt) {
 
     formAdd.reset();
      
-     disableSubmitButton(popupAddButton, popupAddButton);
+    //  disableSubmitButton(popupAddButton, popupAddButton);
   }
 
   formAdd.addEventListener('submit', addElements);
+//Вызываем валидацию
+const formElementProfileValidator = new FormValidator(dataValidator,formElementProfile);
+formElementProfileValidator.enableValidation();
 
+const formAddValidator = new FormValidator (dataValidator, formAdd);
+formAddValidator.enableValidation();
 // закрытие всех попапов на оверлей
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
