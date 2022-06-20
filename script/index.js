@@ -1,5 +1,6 @@
 import FormValidator from "./FormValidator.js";
-import { Card } from "./cards.js";
+import { Card } from "./Card.js";
+import { initialCards, popupImage, dataValidator } from "./constants.js";
 // 1 попап доступы
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_profile');
@@ -21,51 +22,12 @@ const formAdd = popupAdd.querySelector('.popup-add__form');
 const elementBody = document.querySelector('.elements');
 const popupAddButton = document.querySelector('.popup-add__button');
 //3 попап 
-export const popupImage = document.querySelector('.popup-img');
 const popupImageClose = document.querySelector('.popup-img__close');
-export const popupImgWindow = document.querySelector('.popup-img__window');
-export const popupImgName = document.querySelector('.popup-img__img-name');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const dataValidator = {
-        formSelector: '.form',
-        inputSelector: '.popup__input',
-        submitButtonSelector: '.form__submit',
-        inactiveButtonClass: 'form__submit_inactive',
-        inputErrorClass: 'form__input_type_error',
-        errorClass: 'form__input-error_active'
-      }
-
-function popupOpen (item) {
+function openPopup (item) {
   item.classList.add('popup_opened');
 }
-function popupClose (item) {
+function closePopup (item) {
   item.classList.remove('popup_opened');
 };
 
@@ -73,54 +35,57 @@ function popupClose (item) {
 buttonEdit.addEventListener('click', function () {
     inputUserName.value = userName.textContent;
     inputUserInfo.value = userInfo.textContent;
-    popupOpen(popupProfile);
+    openPopup(popupProfile);
 });
 
 buttonClosePopupProfile.addEventListener('click', () => {
-  popupClose(popupProfile);
+  closePopup(popupProfile);
 });
 
 function formSubmitHandlerProfile (evt) {
     evt.preventDefault();
     userName.textContent = inputUserName.value;
     userInfo.textContent = inputUserInfo.value;
-    popupClose(popupProfile);
+    closePopup(popupProfile);
     formElementProfileValidator.disableSubmitButton(popupProfileButton, popupProfileButton);
 }
 
 formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 
 elementsEdit.addEventListener('click', () => {
-  popupOpen(popupAdd);
+  openPopup(popupAdd);
 })
 
 popupAddClose.addEventListener('click', () => {
-  popupClose(popupAdd)
+  closePopup(popupAdd);
 });
 
 popupImageClose.addEventListener('click', () => {
-  popupClose(popupImage)
+  closePopup(popupImage);
 });
+const createCard = (data, name, elements) => {
+  const card = new Card(data, name, elements);
 
+  return card.generateCard();
+}
 // open start window card elements
 initialCards.forEach((item) => {
-  const card = new Card(item.name, item.link, '#elements');
-  const cartElement = card.generateCard();
+  // const card = new Card(item.name, item.link, '#elements');
+  // const cartElement = card.generateCard();
+  const cartElement = createCard(item.name, item.link, '#elements');
   elementBody.append(cartElement);
 });
 // add new elements
 function addElements (evt) {
      evt.preventDefault();
-     
-     const cardCreate = new Card(inputNamePlase.value, inputUrl.value, '#elements');
-     const cardAdd = cardCreate.generateCard()
+
+    const cardAdd = createCard(inputNamePlase.value, inputUrl.value, '#elements');
 
      elementBody.prepend(cardAdd);
-     popupClose(popupAdd);
+     closePopup(popupAdd);
 
-    formAdd.reset();
-     
     formAddValidator.disableSubmitButton(popupAddButton, popupAddButton);
+    formAdd.reset();
   }
 
   formAdd.addEventListener('submit', addElements);
@@ -134,7 +99,7 @@ formAddValidator.enableValidation();
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
     if(evt.target === evt.currentTarget) {
-      popupClose(evt.target);
+      closePopup(evt.target);
     }
   })
 });
@@ -142,6 +107,6 @@ popups.forEach((item) => {
 //close popup ESC
 const closePopupESC = document.addEventListener('keydown', function(evt) {
   if (evt.key === 'Escape') {
-    popupClose(popupProfile) || popupClose(popupAdd) || popupClose(popupImage);
+    closePopup(popupProfile) || closePopup(popupAdd) || closePopup(popupImage);
   }
 });

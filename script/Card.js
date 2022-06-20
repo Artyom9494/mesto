@@ -1,7 +1,5 @@
 
-  import { popupImage } from "../script/index.js";
-  import { popupImgName } from "../script/index.js";
-  import { popupImgWindow } from "../script/index.js";
+  import { popupImage, popupImgWindow, popupImgName } from "./constants.js";
 
   export class Card {
     constructor(name, link, cardSelector) {
