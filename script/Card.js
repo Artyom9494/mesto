@@ -17,8 +17,9 @@
       this._setEventListeners();
 
       this._element.querySelector('.elements__name-place').textContent = this._name;
-      this._element.querySelector('.elements__place').src = this._link;
-      this._element.querySelector('.elements__place').alt = this._name;
+      this._elementsPlace = this._element.querySelector('.elements__place');
+      this._elementsPlace.src = this._link;
+      this._elementsPlace.alt = this._name;
 
       return this._element;
     }
@@ -46,6 +47,11 @@
       popupImgWindow.alt = this._name;
       popupImgName.textContent = this._name;
       popupImage.classList.add('popup_opened');
+      document.addEventListener('keydown', function (evt) {
+        if (evt.key === 'Escape') {
+          popupImage.classList.remove('popup_opened');
+        }
+      })
     }
      //function REMOVE CARDS
     _handleRemoveCardsClick() {

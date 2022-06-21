@@ -24,11 +24,13 @@ const popupAddButton = document.querySelector('.popup-add__button');
 //3 попап 
 const popupImageClose = document.querySelector('.popup-img__close');
 
-function openPopup (item) {
+const openPopup = (item) => {
   item.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupESC);
 }
-function closePopup (item) {
+const closePopup = (item) => {
   item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupESC);
 };
 
 // первый попап функционал
@@ -70,8 +72,6 @@ const createCard = (data, name, elements) => {
 }
 // open start window card elements
 initialCards.forEach((item) => {
-  // const card = new Card(item.name, item.link, '#elements');
-  // const cartElement = card.generateCard();
   const cartElement = createCard(item.name, item.link, '#elements');
   elementBody.append(cartElement);
 });
@@ -104,9 +104,9 @@ popups.forEach((item) => {
   })
 });
 
-//close popup ESC
-const closePopupESC = document.addEventListener('keydown', function(evt) {
+const closePopupESC = (evt) => {
   if (evt.key === 'Escape') {
-    closePopup(popupProfile) || closePopup(popupAdd) || closePopup(popupImage);
+    const popupOpenElement = document.querySelector('.popup_opened');
+    closePopup(popupOpenElement);
   }
-});
+};
