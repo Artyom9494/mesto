@@ -1,5 +1,6 @@
 
   import { popupImage, popupImgWindow, popupImgName } from "./constants.js";
+  import { openPopup } from "./utils/utils.js";
 
   export class Card {
     constructor(name, link, cardSelector) {
@@ -46,12 +47,7 @@
       popupImgWindow.src = this._link;
       popupImgWindow.alt = this._name;
       popupImgName.textContent = this._name;
-      popupImage.classList.add('popup_opened');
-      document.addEventListener('keydown', function (evt) {
-        if (evt.key === 'Escape') {
-          popupImage.classList.remove('popup_opened');
-        }
-      })
+      openPopup(popupImage);
     }
      //function REMOVE CARDS
     _handleRemoveCardsClick() {

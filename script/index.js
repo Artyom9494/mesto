@@ -1,6 +1,7 @@
 import FormValidator from "./FormValidator.js";
 import { Card } from "./Card.js";
 import { initialCards, popupImage, dataValidator } from "./constants.js";
+import { openPopup, closePopup } from "./utils/utils.js";
 // 1 попап доступы
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_profile');
@@ -23,15 +24,6 @@ const elementBody = document.querySelector('.elements');
 const popupAddButton = document.querySelector('.popup-add__button');
 //3 попап 
 const popupImageClose = document.querySelector('.popup-img__close');
-
-const openPopup = (item) => {
-  item.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupESC);
-}
-const closePopup = (item) => {
-  item.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupESC);
-};
 
 // первый попап функционал
 buttonEdit.addEventListener('click', function () {
@@ -103,10 +95,3 @@ popups.forEach((item) => {
     }
   })
 });
-
-const closePopupESC = (evt) => {
-  if (evt.key === 'Escape') {
-    const popupOpenElement = document.querySelector('.popup_opened');
-    closePopup(popupOpenElement);
-  }
-};
