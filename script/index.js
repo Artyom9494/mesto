@@ -2,6 +2,9 @@ import FormValidator from "./FormValidator.js";
 import { Card } from "./Card.js";
 import { initialCards, popupImage, dataValidator } from "./constants.js";
 import { openPopup, closePopup } from "./utils/utils.js";
+import Section from "./Section.js";
+import Popup from "./Popup.js";
+
 // 1 попап доступы
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_profile');
