@@ -1,9 +1,10 @@
-import FormValidator from "./FormValidator.js";
-import { Card } from "./Card.js";
-import { initialCards, popupImage, dataValidator } from "./constants.js";
-import { openPopup, closePopup } from "./utils/utils.js";
-import Section from "./Section.js";
-import Popup from "./Popup.js";
+import './pages/index.css'
+import FormValidator from "./script/FormValidator.js";
+import { Card } from "./script/Card.js";
+import { initialCards, popupImage, dataValidator } from "./script/constants.js";
+import { openPopup, closePopup } from "./script/utils/utils.js";
+import Section from "./script/Section.js";
+import Popup from "./script/Popup.js";
 
 // 1 попап доступы
 const popups = document.querySelectorAll('.popup');
