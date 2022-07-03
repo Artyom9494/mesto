@@ -66,6 +66,10 @@ const createCard = (data, name, elements) => {
 
   return card.generateCard();
 }
+///////////////////////////////////////
+
+
+//////////////////////////////////////
 // open start window card elements
 initialCards.forEach((item) => {
   const cartElement = createCard(item.name, item.link, '#elements');
